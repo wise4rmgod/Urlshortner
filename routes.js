@@ -4,6 +4,7 @@ const Url = require("./models/url");
 
 const router = express.Router();
 
+// Shorten a URL
 router.post("/shorten", async (req, res) => {
   const originalUrl = req.body.url;
   const shortUrl = shortid.generate();
@@ -18,6 +19,27 @@ router.post("/shorten", async (req, res) => {
   res.json(newUrl);
 });
 
+// Set a custom short URL for a URL
+router.post("/custom-shorten", async (req, res) => {
+  const { url, customShortUrl } = req.body;
+
+  const existingUrl = await Url.findOne({ shortUrl: customShortUrl });
+
+  if (existingUrl) {
+    return res.status(400).json({ error: "Custom short URL already in use" });
+  }
+
+  const newUrl = new Url({
+    originalUrl: url,
+    shortUrl: customShortUrl,
+  });
+
+  await newUrl.save();
+
+  res.json(newUrl);
+});
+
+// Redirect to the original URL using the short URL
 router.get("/:shortUrl", async (req, res) => {
   const shortUrl = req.params.shortUrl;
 
@@ -30,12 +52,4 @@ router.get("/:shortUrl", async (req, res) => {
   res.redirect(url.originalUrl);
 });
 
-router.get("/all", async (req, res) => {
-  try {
-    const allUrls = await Url.find();
-    res.json(allUrls);
-  } catch (error) {
-    res.status(500).json({ error: "An error occurred while fetching URLs" });
-  }
-});
 module.exports = router;

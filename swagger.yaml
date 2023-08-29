@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: URL Shortener API
+  version: 1.0.0
+paths:
+  /shorten:
+    post:
+      summary: Shorten a URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+              example:
+                url: "https://www.example.com"
+      responses:
+        200:
+          description: Successfully shortened URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  originalUrl:
+                    type: string
+                  shortUrl:
+                    type: string
+  /custom-shorten:
+    post:
+      summary: Set a custom short URL for a URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                customShortUrl:
+                  type: string
+              example:
+                url: "https://www.example.com"
+                customShortUrl: "custom123"
+      responses:
+        200:
+          description: Successfully set custom short URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  originalUrl:
+                    type: string
+                  shortUrl:
+                    type: string
+  /{shortUrl}:
+    get:
+      summary: Redirect to the original URL using the short URL
+      parameters:
+        - in: path
+          name: shortUrl
+          required: true
+          schema:
+            type: string
+          description: Short URL to redirect to the original URL
+      responses:
+        302:
+          description: Redirect to the original URL
+
+components:
+  schemas:
+    Url:
+      type: object
+      properties:
+        originalUrl:
+          type: string
+        shortUrl:
+          type: string
