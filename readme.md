@@ -4,7 +4,7 @@ A simple URL shortener application built using Node.js and MongoDB.
 
 ## Features
 
-- Shorten long URLs to easily share them.
+- Shorten long URLs to share them easily.
 - Redirect shortened URLs to their original destinations.
 - Create custom short URLs.
 
@@ -51,11 +51,11 @@ node index.js
 
 ```
 
-Access the API documentation by opening your web browser and navigating to `http://localhost:3000/api-docs/`. Here, you can interact with the API using Swagger UI.
+6. Access the API documentation by opening your web browser and navigating to `http://localhost:3000/api-docs/`. Here, you can interact with the API using Swagger UI.
 
-To shorten a URL, make a POST request to `/shorten` with a JSON body containing the url you want to shorten. You will receive a JSON response with the `originalUrl` and the `shortUrl` that you can use for redirection.
+7. To shorten a URL, make a POST request to `/shorten` with a JSON body containing the url you want to shorten. You will receive a JSON response with the `originalUrl` and the `shortUrl` you can use for redirection.
 
-To access the original URL using the short URL, copy the shortUrl value from the response of the `/shorten` endpoint and append it to `http://localhost:3000/`. This will redirect you to the original URL.
+8. To access the original URL using the short URL, copy the shortUrl value from the response of the `/shorten` endpoint and append it to `http://localhost:3000/`. This will redirect you to the original URL.
 
 ### Base URL
 
@@ -89,6 +89,6 @@ Shorten a URL
 
 ```
 
-## Access the original URL:
+### Access the original URL:
 
-Open your web browser and navigate to http://localhost:3000/jQnCBJAIh.
+Open your web browser and navigate to `http://localhost:3000/jQnCBJAIh`.
