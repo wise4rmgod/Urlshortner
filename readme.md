@@ -51,7 +51,7 @@ node index.js
 
 ```
 
-6. Access the API documentation by opening your web browser and navigating to `http://localhost:3000/api-docs/`. Here, you can interact with the API using Swagger UI.
+6. Access the API documentation by opening your web browser and navigating to http://localhost:3000/api-docs/. Here, you can interact with the API using Swagger UI.
 
 7. To shorten a URL, make a POST request to `/shorten` with a JSON body containing the url you want to shorten. You will receive a JSON response with the `originalUrl` and the `shortUrl` you can use for redirection.
 
@@ -91,4 +91,4 @@ Shorten a URL
 
 ### Access the original URL:
 
-Open your web browser and navigate to `http://localhost:3000/jQnCBJAIh`.
+Open your web browser and navigate to http://localhost:3000/jQnCBJAIh.
